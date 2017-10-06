@@ -26,6 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap/bootstrap-responsive.css" >
         <link rel="stylesheet" href="<?php echo base_url();?>assets/css/mobile-style.css" >
         <link rel="shortcut icon" href="<?php echo base_url();?>assets/img/pluton/ico/favicon.ico">
+        <link rel="manifest" href="<?php echo base_url();?>assets/js/manifest.json">
 
 
         <!-- Java Script Library -->
@@ -100,6 +101,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             });
 
         </script>
+
+        <!-- Add home screen script -->
+        <script>
+            if ('serviceWorker' in navigator) {
+                    console.log("Will the service worker register?");
+                        navigator.serviceWorker.register('<?php echo base_url();?>assets/js/service-worker.js')
+                    .then(function(reg){
+                        console.log("Yes, it did.");
+                    }).catch(function(err) {
+                    console.log("No it didn't. This happened:", err)
+                });
+            }
+        </script>
+
         <noscript>
             You need to enable JavaScript to run this app.
         </noscript>
